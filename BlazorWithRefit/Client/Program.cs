@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using BlazorWithRefit.Client.Services;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Polly;
 using Refit;
 
 namespace BlazorWithRefit.Client
@@ -22,7 +23,13 @@ namespace BlazorWithRefit.Client
             builder.Services.AddRefitClient<IWeatherService>(settings).ConfigureHttpClient(c =>
             {
                 c.BaseAddress = new Uri("https://localhost:44366/api");
-            });
+            })
+                .AddTransientHttpErrorPolicy(b => b.WaitAndRetryAsync(new[]
+                {
+                    TimeSpan.FromSeconds(1),
+                    TimeSpan.FromSeconds(5),
+                    TimeSpan.FromSeconds(10),
+                }));
 
             await builder.Build().RunAsync();
         }
