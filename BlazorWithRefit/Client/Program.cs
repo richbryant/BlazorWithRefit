@@ -24,6 +24,8 @@ namespace BlazorWithRefit.Client
             {
                 c.BaseAddress = new Uri("https://localhost:44366/api");
             })
+                //Retry policy using Polly
+                //You could also add a fallback policy, a circuit-breaker or any combination of these
                 .AddTransientHttpErrorPolicy(b => b.WaitAndRetryAsync(new[]
                 {
                     TimeSpan.FromSeconds(1),
