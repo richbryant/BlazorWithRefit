@@ -21,7 +21,7 @@ As you can see, it's a straightforward Refit service marked with a `[Get]` attri
 
 Naturally, that's injected into FetchData.razor instead of the usual HttpClient.
 
-All the setup for this is in `program.cs` as mentioned above, but in order to use System.TextJson - which is the new default for AspNetCore - instead of Refit's preferred NewtonSoft.Json, you also need to override the default serializer.  This is really simple.  Just copy mine.  [You'll find it here](https://github.com/richbryant/BlazorWithRefit/blob/main/BlazorWithRefit/Client/JsonContentSerializer.cs).  The setup for this is in the `settings` variable in program.cs. I could have inlined it but it's clearer this way.
+All the setup for this is in `program.cs` as mentioned above, but in order to use System.Text.Json - which is the new default for AspNetCore - instead of Refit's preferred NewtonSoft.Json, you also need to override the default serializer.  This is really simple.  Just copy mine.  [You'll find it here](https://github.com/richbryant/BlazorWithRefit/blob/main/BlazorWithRefit/Client/JsonContentSerializer.cs).  The setup for this is in the `settings` variable in program.cs. I could have inlined it but it's clearer this way.
 
 Take what you need, go, enjoy cleaner RESTful Api calls from Blazor on wasm!
 
