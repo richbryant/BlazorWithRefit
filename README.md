@@ -1,5 +1,5 @@
 # BlazorWithRefit
-Very simple demo of Blazor on wasm with Refit and System.Text.Json
+Very simple demo of Blazor on wasm with [Refit](https://github.com/reactiveui/refit), [Polly](http://www.thepollyproject.org/) and System.Text.Json
 
 ## Short Form - 
 
